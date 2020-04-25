@@ -38,6 +38,7 @@ class Kevin(commands.Cog):
         alias_used = ctx.invoked_with
         text = msg[len(prefix_used)+1 + len(alias_used):]
         print(text)
+
         if text == '':
             await ctx.send(f"Example Options:\n" + "\n".join(self.get_options("example")))
         else:
