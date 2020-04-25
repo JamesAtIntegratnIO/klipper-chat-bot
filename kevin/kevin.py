@@ -1,6 +1,6 @@
-import yaml
 from os import environ
 from discord.ext import commands
+import yaml
 
 
 class Kevin(commands.Cog):
@@ -11,8 +11,8 @@ class Kevin(commands.Cog):
 
     @staticmethod
     def _get_command_list():
-        with open('command_list.yaml') as f:
-            return yaml.load(f, Loader=yaml.FullLoader)
+        with open('command_list.yaml') as file:
+            return yaml.load(file, Loader=yaml.FullLoader)
 
     def _get_options(self, parent_command):
         option_list = []
@@ -27,7 +27,8 @@ class Kevin(commands.Cog):
         msg = ctx.message.content
         option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
         if option == '':
-            await ctx.send(f"{ctx.invoked_with} options:\n" + "\n".join(self._get_options(ctx.invoked_with)))
+            await ctx.send(f"{ctx.invoked_with} options:\n" +
+                           "\n".join(self._get_options(ctx.invoked_with)))
         else:
             await ctx.send(self._get_response(ctx.invoked_with, option))
 
