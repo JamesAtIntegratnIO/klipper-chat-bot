@@ -6,6 +6,7 @@ from discord.ext import commands
 
 
 class Kevin(commands.Cog):
+
     def __init__(self, bot):
         self.bot = bot
         self.command_list = self.get_command_list()
@@ -19,48 +20,65 @@ class Kevin(commands.Cog):
         return self.command_list.get(parent_command).get(child_command)
 
     def get_options(self, parent_command):
-        return self.command_list.get(parent_command)
+        option_list = []
+        for key in self.command_list.get(parent_command):
+            option_list.append(key)
+        return option_list
 
-    async def get_help(self, ctx, parent_command):
-        for command in self.get_options(parent_command):
-            await ctx.send(command)
+    @commands.command(aliases=['e'], help='!e option\nWithout an option will list options')
+    @commands.has_permissions(embed_links=True)
+    async def example(self, ctx):
+        # Next we get the message with the command in it.
+        msg = ctx.message.content
 
-    @commands.command()
-    async def example(self, ctx, message):
-        if message == "help":
-            await self.get_help(parent_command="example")
+        # Extracting the text sent by the user
+        # ctx.invoked_with gives the alias used
+        # ctx.prefix gives the prefix used while invoking the command
+        prefix_used = ctx.prefix
+        alias_used = ctx.invoked_with
+        text = msg[len(prefix_used) + len(alias_used):]
+        if text == '':
+            await ctx.send(f"Example Options:\n" + "\n".join(self.get_options("example")))
         else:
-            await ctx.send(self.get_response("example", message))
+            await ctx.send(self.get_response("example", text))
 
-    @commands.command()
-    async def docs(self, ctx, message):
-        if message == "help":
-            await self.get_help(parent_command="docs")
+    @commands.command(aliases=['d'], help='!d option\nWithout an option will list options')
+    @commands.has_permissions(embed_links=True)
+    async def docs(self, ctx):
+        msg = ctx.message.content
+        prefix_used = ctx.prefix
+        alias_used = ctx.invoked_with
+        text = msg[len(prefix_used) + len(alias_used):]
+        if text == '':
+            await ctx.send(f"Docs Options:\n" + "\n".join(self.get_options("docs")))
         else:
-            await ctx.send(self.get_response("docs", message))
 
-    @commands.command()
-    async def tutorials(self, ctx, message):
-        if message == "help":
-            await self.get_help(parent_command="tutorials")
+            await ctx.send(self.get_response("docs", text))
+
+    @commands.command(aliases=['t'], help='!t option\nWithout an option will list options')
+    @commands.has_permissions(embed_links=True)
+    async def tutorials(self, ctx):
+        msg = ctx.message.content
+        prefix_used = ctx.prefix
+        alias_used = ctx.invoked_with
+        text = msg[len(prefix_used) + len(alias_used):]
+        if text == '':
+            await ctx.send(f"Tutorials Options:\n" + "\n".join(self.get_options("tutorials")))
         else:
-            await ctx.send(self.get_response("tutorials", message))
+            await ctx.send(self.get_response("tutorials", text))
 
-    @commands.command()
-    async def macros(self, ctx, message):
-        if message == "help":
-            await self.get_help(parent_command="macros")
+    @commands.command(aliases=['m'], help='!m option\nWithout an option will list options')
+    @commands.has_permissions(embed_links=True)
+    async def macros(self, ctx):
+
+        msg = ctx.message.content
+        prefix_used = ctx.prefix
+        alias_used = ctx.invoked_with
+        text = msg[len(prefix_used) + len(alias_used):]
+        if text == '':
+            await ctx.send(f"Macro Options:\n" + "\n".join(self.get_options("macros")))
         else:
-            await ctx.send(self.get_response("macros", message))
-
-    @commands.command()
-    async def help(self, ctx):
-        await ctx.send("""
-        example: links to example code
-        docs: links to popular docs
-        tutorials: links to helpful tuts
-        macros: links to macros
-        """)
+            await ctx.send(self.get_response("macros", text))
 
 
 class GitBot(commands.Cog):
@@ -80,8 +98,7 @@ class GitBot(commands.Cog):
 
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
-                   description='Relatively simple music bot example')
-
+                   description='Klipper Support Bot')
 bot.add_cog(Kevin(bot))
 # bot.add_cog(GitBot(bot))
 bot.run(environ.get('DISCORDTOKEN'))
