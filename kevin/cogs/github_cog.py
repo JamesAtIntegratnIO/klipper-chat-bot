@@ -3,7 +3,7 @@ from discord.ext import commands
 import github
 
 
-class GitBot(commands.Cog):
+class GithubCog(commands.Cog):
     def __init__(self, bot):
         self.g_hub = github.Github(environ.get('GITHUBKEY'))
         self.bot = bot

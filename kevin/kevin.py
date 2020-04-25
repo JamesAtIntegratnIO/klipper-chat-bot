@@ -32,29 +32,29 @@ class Kevin(commands.Cog):
         else:
             await ctx.send(self._get_response(ctx.invoked_with, option))
 
-    @commands.command(aliases=['e'], help='!e option\nWithout an option will list options')
+    @commands.command(help='!e option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def example(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['d'], help='!d option\nWithout an option will list options')
+    @commands.command(help='!d option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def docs(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['t'], help='!t option\nWithout an option will list options')
+    @commands.command(help='!t option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def tutorials(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['m'], help='!m option\nWithout an option will list options')
+    @commands.command(help='!m option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def macros(self, ctx):
         await self._help_option_wrapper(ctx)
 
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
+BOT = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
                    description='Klipper Support Bot')
-bot.add_cog(Kevin(bot))
-# bot.add_cog(GitBot(bot))
-bot.run(environ.get('DISCORDTOKEN'))
+BOT.add_cog(Kevin(BOT))
+# bot.add_cog(github_cog(bot))
+BOT.run(environ.get('DISCORDTOKEN'))
