@@ -32,7 +32,7 @@ class Kevin(commands.Cog):
         else:
             await ctx.send(self._get_response(ctx.invoked_with, option))
 
-    @commands.command(help='!example option\nWithout an option will list options')
+    @commands.command(help='!examples option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def examples(self, ctx):
         await self._help_option_wrapper(ctx)
