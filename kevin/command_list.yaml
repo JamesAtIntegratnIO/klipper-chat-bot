@@ -1,4 +1,4 @@
-example:
+examples:
   bed_mesh: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L42
   bltouch: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L616
 docs:

@@ -18,10 +18,7 @@ class Kevin(commands.Cog):
         option_list = []
         for key in self.command_list.get(parent_command):
             option_list.append(key)
-        if not option_list:
-            return "No options available yet. Please add some"
-        else:
-            return option_list
+        return option_list
 
     def _get_response(self, parent_command, child_command):
         return f'<{self.command_list.get(parent_command).get(child_command)}>'
