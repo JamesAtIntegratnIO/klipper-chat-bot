@@ -34,7 +34,7 @@ class Kevin(commands.Cog):
 
     @commands.command(help='!example option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def example(self, ctx):
+    async def examples(self, ctx):
         await self._help_option_wrapper(ctx)
 
     @commands.command(help='!docs option\nWithout an option will list options')
