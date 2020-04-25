@@ -36,7 +36,9 @@ class Kevin(commands.Cog):
         # ctx.prefix gives the prefix used while invoking the command
         prefix_used = ctx.prefix
         alias_used = ctx.invoked_with
-        text = msg[len(prefix_used) + len(alias_used):]
+        text = msg[len(prefix_used)+1 + len(alias_used):]
+        print(text)
+
         if text == '':
             await ctx.send(f"Example Options:\n" + "\n".join(self.get_options("example")))
         else:
@@ -48,7 +50,7 @@ class Kevin(commands.Cog):
         msg = ctx.message.content
         prefix_used = ctx.prefix
         alias_used = ctx.invoked_with
-        text = msg[len(prefix_used) + len(alias_used):]
+        text = msg[len(prefix_used)+1 + len(alias_used):]
         if text == '':
             await ctx.send(f"Docs Options:\n" + "\n".join(self.get_options("docs")))
         else:
@@ -61,7 +63,7 @@ class Kevin(commands.Cog):
         msg = ctx.message.content
         prefix_used = ctx.prefix
         alias_used = ctx.invoked_with
-        text = msg[len(prefix_used) + len(alias_used):]
+        text = msg[len(prefix_used)+1 + len(alias_used):]
         if text == '':
             await ctx.send(f"Tutorials Options:\n" + "\n".join(self.get_options("tutorials")))
         else:
@@ -74,7 +76,7 @@ class Kevin(commands.Cog):
         msg = ctx.message.content
         prefix_used = ctx.prefix
         alias_used = ctx.invoked_with
-        text = msg[len(prefix_used) + len(alias_used):]
+        text = msg[len(prefix_used)+1 + len(alias_used):]
         if text == '':
             await ctx.send(f"Macro Options:\n" + "\n".join(self.get_options("macros")))
         else:
