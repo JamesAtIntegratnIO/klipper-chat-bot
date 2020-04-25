@@ -52,6 +52,11 @@ class Kevin(commands.Cog):
     async def macros(self, ctx):
         await self._help_option_wrapper(ctx)
 
+    @commands.command(help='!tools option\nWithout an option will list options')
+    @commands.has_permissions(embed_links=True)
+    async def tools(self, ctx):
+        await self._help_option_wrapper(ctx)
+
 
 BOT = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
                    description='Klipper Support Bot')
