@@ -78,8 +78,8 @@ jobs:
     needs: push
     steps:
       - name: deploy with ssh
-      - uses: fifsky/ssh-action@master
-      - with:
+        uses: fifsky/ssh-action@master
+        with:
         command: |
           cd /tmp
           docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
