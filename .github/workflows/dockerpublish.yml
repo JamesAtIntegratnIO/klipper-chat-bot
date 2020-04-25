@@ -74,3 +74,16 @@ jobs:
 
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+  deploy:
+    needs: push
+    steps:
+      - name: deploy with ssh
+      - uses: fifsky/ssh-action@master
+      - with:
+        command: |
+          cd /tmp
+          docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
+          docker run klipper-chat-bot -e GITHUBKEY=${{ secrets.GITHUBKEY }} -e DISCORDTOKEN ${{ secrets.DISCORDTOKEN}}
+        host: ${{ secrets.DIGITALOCEANHOST }}
+        user: root
+        key: ${{ secrets.DIGITALOCEANPRIVATEKEY}}
