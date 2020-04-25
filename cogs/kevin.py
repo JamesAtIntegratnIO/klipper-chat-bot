@@ -56,10 +56,3 @@ class Kevin(commands.Cog):
     @commands.has_permissions(embed_links=True)
     async def tools(self, ctx):
         await self._help_option_wrapper(ctx)
-
-
-BOT = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
-                   description='Klipper Support Bot')
-BOT.add_cog(Kevin(BOT))
-# bot.add_cog(github_cog(bot))
-BOT.run(environ.get('DISCORDTOKEN'))
