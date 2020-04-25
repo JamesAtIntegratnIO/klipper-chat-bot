@@ -6,4 +6,4 @@ ADD kevin/kevin.py /
 ADD kevin/command_list.yaml /
 
 
-CMD [ "python", ".kevin/kevin.py"]
+CMD [ "python", "./kevin/kevin.py"]
