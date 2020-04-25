@@ -27,8 +27,8 @@ class Kevin(commands.Cog):
         msg = ctx.message.content
         option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
         if option == '':
-            await ctx.send(f"{ctx.invoked_with} options:\n" +
-                           "\n".join(self._get_options(ctx.invoked_with)))
+            await ctx.send(f"```{ctx.invoked_with} options:\n" +
+                           "\n".join(self._get_options(ctx.invoked_with)) + "```")
         else:
             await ctx.send(self._get_response(ctx.invoked_with, option))
 
