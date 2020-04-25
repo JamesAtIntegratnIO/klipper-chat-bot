@@ -21,7 +21,7 @@ class Kevin(commands.Cog):
         return option_list
 
     def _get_response(self, parent_command, child_command):
-        return self.command_list.get(parent_command).get(child_command)
+        return f'<{self.command_list.get(parent_command).get(child_command)}>'
 
     async def _help_option_wrapper(self, ctx):
         msg = ctx.message.content
@@ -32,22 +32,22 @@ class Kevin(commands.Cog):
         else:
             await ctx.send(self._get_response(ctx.invoked_with, option))
 
-    @commands.command(help='!e option\nWithout an option will list options')
+    @commands.command(help='!example option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def example(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!d option\nWithout an option will list options')
+    @commands.command(help='!docs option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def docs(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!t option\nWithout an option will list options')
+    @commands.command(help='!tutorials option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def tutorials(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!m option\nWithout an option will list options')
+    @commands.command(help='!macros option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def macros(self, ctx):
         await self._help_option_wrapper(ctx)
