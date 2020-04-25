@@ -18,21 +18,49 @@ class Kevin(commands.Cog):
     def get_response(self, parent_command, child_command):
         return self.command_list.get(parent_command).get(child_command)
 
+    def get_options(self, parent_command):
+        return self.command_list.get(parent_command)
+
+    async def get_help(self, ctx, parent_command):
+        for command in self.get_options(parent_command):
+            await ctx.send(command)
+
     @commands.command()
     async def example(self, ctx, message):
-        await ctx.send(self.get_response("example", message))
+        if message == "help":
+            await self.get_help(parent_command="example")
+        else:
+            await ctx.send(self.get_response("example", message))
 
     @commands.command()
     async def docs(self, ctx, message):
-        await ctx.send(self.get_response("docs", message))
+        if message == "help":
+            await self.get_help(parent_command="docs")
+        else:
+            await ctx.send(self.get_response("docs", message))
 
     @commands.command()
     async def tutorials(self, ctx, message):
-        await ctx.send(self.get_response("tutorials", message))
+        if message == "help":
+            await self.get_help(parent_command="tutorials")
+        else:
+            await ctx.send(self.get_response("tutorials", message))
 
     @commands.command()
     async def macros(self, ctx, message):
-        await ctx.send(self.get_response("macros", message))
+        if message == "help":
+            await self.get_help(parent_command="macros")
+        else:
+            await ctx.send(self.get_response("macros", message))
+
+    @commands.command()
+    async def help(self, ctx):
+        await ctx.send("""
+        example: links to example code
+        docs: links to popular docs
+        tutorials: links to helpful tuts
+        macros: links to macros
+        """)
 
 
 class GitBot(commands.Cog):
@@ -46,7 +74,6 @@ class GitBot(commands.Cog):
 
     @commands.command()
     async def list_open_issues(self, ctx):
-
         open_issues = self.repo.get_issues(state='open')
         for issue in open_issues:
             await ctx.send(issue)
