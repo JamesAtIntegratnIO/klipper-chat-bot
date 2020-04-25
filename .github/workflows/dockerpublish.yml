@@ -84,7 +84,7 @@ jobs:
           command: |
             cd /tmp
             docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
-            docker run klipper-chat-bot -e GITHUBKEY=${{ secrets.GITHUBKEY }} -e DISCORDTOKEN ${{ secrets.DISCORDTOKEN}}
+            docker run docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest -e GITHUBKEY=${{ secrets.GITHUBKEY }} -e DISCORDTOKEN ${{ secrets.DISCORDTOKEN}}
           host: ${{ secrets.DIGITALOCEANHOST }}
           user: root
           key: ${{ secrets.DIGITALOCEANPRIVATEKEY}}
