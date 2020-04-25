@@ -83,8 +83,8 @@ jobs:
         with:
           command: |
             cd /tmp
-            docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
-            docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name klipper-chat-bot docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
+            docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest &
+            docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name klipper-chat-bot docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest &
           host: ${{ secrets.DIGITALOCEANHOST }}
           user: root
           key: ${{ secrets.DIGITALOCEANPRIVATEKEY}}
