@@ -82,7 +82,10 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest && docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name klipper-chat-bot docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest &
+            docker stop klipper-chat-bot
+            docker rm klipper-chat-bot
+            docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
+            docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name klipper-chat-bot -d docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
           host: ${{ secrets.DIGITALOCEANHOST }}
           user: root
           key: ${{ secrets.DIGITALOCEANPRIVATEKEY}}
