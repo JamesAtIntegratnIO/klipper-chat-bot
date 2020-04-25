@@ -2,6 +2,7 @@ from os import environ
 from discord.ext import commands
 from cogs.github_cog import GithubCog
 from cogs.kevin import Kevin
+from cogs.info import Information
 
 
 if __name__ == '__main__':
@@ -10,4 +11,5 @@ if __name__ == '__main__':
                        description='Klipper Support Bot')
     BOT.add_cog(Kevin(BOT))
     BOT.add_cog(GithubCog(BOT))
+    BOT.add_cog(Information(BOT))
     BOT.run(environ.get('DISCORDTOKEN'))
