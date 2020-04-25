@@ -1,9 +1,12 @@
 example:
-  bed_mesh: link to bed mesh
-  bed_level: link to bed level
+  bed_mesh: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L42
+  bltouch: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L616
 docs:
-  bed_mesh: link to bed mesh docs
+  bed_mesh: https://github.com/KevinOConnor/klipper/blob/master/docs/Bed_Mesh.md
+  bed_level: https://github.com/KevinOConnor/klipper/blob/master/docs/Bed_Level.md
+  pressure_advance: https://github.com/KevinOConnor/klipper/blob/master/docs/Pressure_Advance.md
 tutorials:
-  paper_test: link to paper test
+  esteps: https://mattshub.com/blog/2017/04/19/extruder-calibration
+  estep_math: https://github.com/KevinOConnor/klipper/issues/934#issuecomment-441753898
 macros:
-  start_gcode: link to start_gcode
+  temp_reactive_leds: https://discordapp.com/channels/431557959978450984/702328333760987207/702362026500030515
