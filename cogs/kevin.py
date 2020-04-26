@@ -21,13 +21,13 @@ class Kevin(commands.Cog):
             option_list.append(key)
         return option_list
 
-    def _get_response(self, parent_command, child_command):
-        response = self.command_list.get(parent_command).get(child_command)
+    def _get_response(self, parent_command, option):
+        response = self.command_list.get(parent_command).get(option)
         if not response:
-            best_match = difflib.get_close_matches(child_command, self.command_list.get(parent_command))
+            best_match = difflib.get_close_matches(option, self.command_list.get(parent_command))
             print(f'best_match: {best_match}')
             if not best_match:
-                return f'Could not anything like option: {child_command}'
+                return f'Could not anything like option: {option}'
             else:
                 return f'<{self.command_list.get(parent_command).get(best_match[0])}>'
         else:
