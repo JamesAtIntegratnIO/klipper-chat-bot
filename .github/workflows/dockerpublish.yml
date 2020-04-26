@@ -32,8 +32,8 @@ jobs:
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
           else
-            docker build . --file Dockerfile
-            docker run -it --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock pylint **/*
+            docker build . --file Dockerfile --tag test-image
+            docker run -it --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock pylint test-image **/*
           fi
 
   # Push image to GitHub Packages.
@@ -86,7 +86,7 @@ jobs:
             docker stop klipper-chat-bot
             docker rm klipper-chat-bot
             docker pull docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
-            docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name klipper-chat-bot -d docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
+            docker run -P --env GITHUBKEY=${{ secrets.GITHUBKEY }} --env DISCORDTOKEN=${{ secrets.DISCORDTOKEN}} --name $IMAGE_NAME -d docker.pkg.github.com/boboysdadda/klipper-chat-bot/klipper-chat-bot:latest
           host: ${{ secrets.DIGITALOCEANHOST }}
           user: root
           key: ${{ secrets.DIGITALOCEANPRIVATEKEY}}
