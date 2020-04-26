@@ -9,8 +9,9 @@ tutorials:
   esteps: https://mattshub.com/blog/2017/04/19/extruder-calibration
   estep_math: https://github.com/KevinOConnor/klipper/issues/934#issuecomment-441753898
 macros:
-  mentals_temp-reactive-leds: https://klipper.info/macro-examples-1/mentals-temperature-reactive-leds
-  aboms_cancel-print: https://klipper.info/macro-examples-1/aboms-cancel_print
-  aboms_menu: https://klipper.info/macro-examples-1/aboms-menu
-  dutchdudes_automatic-bed-selection: https://klipper.info/macro-examples-1/dutchdudes-automatic-bed-selection
+  mentals-temp_reactive_leds: https://klipper.info/macro-examples-1/mentals-temperature-reactive-leds
+  aboms-cancel_print: https://klipper.info/macro-examples-1/aboms-cancel_print
+  aboms-menu: https://klipper.info/macro-examples-1/aboms-menu
+  dutchdudes-automatic_bed_selection: https://klipper.info/macro-examples-1/dutchdudes-automatic-bed-selection
+  makotos-save_at_end: https://klipper.info/macro-examples-1/makotos-save_at_end-if_set
 tools:
