@@ -9,6 +9,11 @@ class Kevin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.command_list = self._get_command_list()
+        self.aliases = {'ex': 'example',
+                        'do': 'doc',
+                        'tu': 'tutorial',
+                        'ma': 'macro',
+                        'to': 'tool'}
 
     @staticmethod
     def _get_command_list():
@@ -21,48 +26,55 @@ class Kevin(commands.Cog):
             option_list.append(key)
         return option_list
 
-    def _get_response(self, parent_command, option):
-        response = self.command_list.get(parent_command).get(option)
+    def _get_response(self, command, option):
+        response = self.command_list.get(command).get(option)
         if not response:
-            best_match = difflib.get_close_matches(option, self.command_list.get(parent_command))
+            best_match = difflib.get_close_matches(option, self.command_list.get(command))
             print(f'best_match: {best_match}')
             if not best_match:
                 return f'Could not anything like option: {option}'
             else:
-                return f'<{self.command_list.get(parent_command).get(best_match[0])}>'
+                return f'<{self.command_list.get(command).get(best_match[0])}>'
         else:
             return f'<{response}>'
+
+    def get_command(self, command):
+        if len(command) == 2:
+            return self.aliases.get(command)
+        else:
+            return command
 
     async def _help_option_wrapper(self, ctx):
         msg = ctx.message.content
         option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
+
         if option == '':
             await ctx.send(f"```{ctx.invoked_with} options:\n" +
-                           "\n".join(self._get_options(ctx.invoked_with)) + "```")
+                           "\n".join(self._get_options(self.get_command(ctx.invoked_with))) + "```")
         else:
-            await ctx.send(self._get_response(ctx.invoked_with, option))
+            await ctx.send(self._get_response(self.get_command(ctx.invoked_with), option))
 
-    @commands.command(help='!examples option\nWithout an option will list options')
+    @commands.command(aliases=['ex'], help='!examples option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def examples(self, ctx):
+    async def example(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!docs option\nWithout an option will list options')
+    @commands.command(aliases=['do'], help='!docs option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def docs(self, ctx):
+    async def doc(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!tutorials option\nWithout an option will list options')
+    @commands.command(aliases=['tu'], help='!tutorials option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def tutorials(self, ctx):
+    async def tutorial(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!macros option\nWithout an option will list options')
+    @commands.command(aliases=['ma'], help='!macros option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def macros(self, ctx):
+    async def macro(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(help='!tools option\nWithout an option will list options')
+    @commands.command(aliases=['to'], help='!tools option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
-    async def tools(self, ctx):
+    async def tool(self, ctx):
         await self._help_option_wrapper(ctx)

@@ -1,9 +1,9 @@
-examples:
+example:
   bed_mesh: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L42
   bltouch: https://github.com/KevinOConnor/klipper/blob/9730be8e17b4b21e34f8ed2733c53e8b5924bebb/config/example-extras.cfg#L616
   end_print: https://github.com/KevinOConnor/klipper/blob/ced389f4f635ed362eccbddba19e4e54dd96e7d6/config/sample-macros.cfg#L36
   start_print: https://github.com/KevinOConnor/klipper/blob/ced389f4f635ed362eccbddba19e4e54dd96e7d6/config/sample-macros.cfg#L15
-docs:
+doc:
   bed_mesh: https://github.com/KevinOConnor/klipper/blob/master/docs/Bed_Mesh.md
   bed_level: https://github.com/KevinOConnor/klipper/blob/master/docs/Bed_Level.md
   command_template: https://github.com/KevinOConnor/klipper/blob/master/docs/Command_Templates.md
@@ -12,13 +12,13 @@ docs:
   gcodes: https://github.com/KevinOConnor/klipper/blob/master/docs/G-Codes.md
   manual_level: https://github.com/KevinOConnor/klipper/blob/master/docs/Manual_Level.md
   pressure_advance: https://github.com/KevinOConnor/klipper/blob/master/docs/Pressure_Advance.md
-tutorials:
+tutorial:
   esteps: https://mattshub.com/blog/2017/04/19/extruder-calibration
   estep_math: https://github.com/KevinOConnor/klipper/issues/934#issuecomment-441753898
-macros:
+macro:
   mentals_temp-reactive-leds: https://klipper.info/macro-examples-1/mentals-temperature-reactive-leds
   aboms_cancel-print: https://klipper.info/macro-examples-1/aboms-cancel_print
   aboms_menu: https://klipper.info/macro-examples-1/aboms-menu
   dutchdudes_automatic-bed-selection: https://klipper.info/macro-examples-1/dutchdudes-automatic-bed-selection
-tools:
+tool:
   esteps_calc: https://jsfiddle.net/tonn0297/0bcx1h7d/
