@@ -26,11 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Python Pylin GitHub Action
-        uses: fylein/python-pylint-github-action@v1
-        with:
-          args: pip3 install -r requirements.txt && pylint --exit-zero kevin
-
       - name: Run tests
         run: |
           if [ -f docker-compose.test.yml ]; then
