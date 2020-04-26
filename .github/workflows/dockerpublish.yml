@@ -33,6 +33,7 @@ jobs:
             docker-compose --file docker-compose.test.yml run sut
           else
             docker build . --file Dockerfile
+            docker run -it --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock pylint **/*
           fi
 
   # Push image to GitHub Packages.
