@@ -44,6 +44,18 @@ class Kevin(commands.Cog):
         else:
             return command
 
+    def get_related_links(self, node, option):
+        if isinstance(node, list):
+            for item in node:
+                for value in self.get_related_links(item, option):
+                    yield value
+        elif isinstance(node, dict):
+            if option in node:
+                yield node.get(option)
+            for value in node.values():
+                for val in self.get_related_links(value, option):
+                    yield val
+
     async def _help_option_wrapper(self, ctx):
         msg = ctx.message.content
         option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
@@ -53,6 +65,15 @@ class Kevin(commands.Cog):
                            "\n".join(self._get_options(self.get_command(ctx.invoked_with))) + "```")
         else:
             await ctx.send(self._get_response(self.get_command(ctx.invoked_with), option))
+
+    @commands.command(help='!all option\n Will fetch all occurrences of option from all commands.  ')
+    @commands.has_permissions(embed_links=True)
+    async def all(self, ctx):
+        msg = ctx.message.content
+        option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
+        response = (list(self.get_related_links(self.command_list, option)))
+        escaped_response = ["<" + resp + ">" for resp in response]
+        await ctx.send(f"\n\n".join(escaped_response))
 
     @commands.command(aliases=['ex'], help='!examples option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
