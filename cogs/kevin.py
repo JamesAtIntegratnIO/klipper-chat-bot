@@ -75,27 +75,27 @@ class Kevin(commands.Cog):
         escaped_response = ["<" + resp + ">" for resp in response]
         await ctx.send(f"\n\n".join(escaped_response))
 
-    @commands.command(aliases=['ex'], help='!examples option\nWithout an option will list options')
+    @commands.command(aliases=['ex'], help='!example option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def example(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['do'], help='!docs option\nWithout an option will list options')
+    @commands.command(aliases=['do'], help='!doc option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def doc(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['tu'], help='!tutorials option\nWithout an option will list options')
+    @commands.command(aliases=['tu'], help='!tutorial option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def tutorial(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['ma'], help='!macros option\nWithout an option will list options')
+    @commands.command(aliases=['ma'], help='!macro option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def macro(self, ctx):
         await self._help_option_wrapper(ctx)
 
-    @commands.command(aliases=['to'], help='!tools option\nWithout an option will list options')
+    @commands.command(aliases=['to'], help='!tool option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
     async def tool(self, ctx):
         await self._help_option_wrapper(ctx)
