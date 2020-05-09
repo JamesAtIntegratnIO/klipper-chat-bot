@@ -14,7 +14,7 @@ class GithubCog(commands.Cog):
         return self.g_hub.get_repo("KevinOConnor/klipper")
 
     @commands.command(help='!list_open_issues NumberOfDays')
-    @commands.has_any_role("Admin", "Helper")
+    @commands.has_any_role("Admin", "Helpers")
     async def list_open_issues(self, ctx):
         msg = ctx.message.content
         option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
