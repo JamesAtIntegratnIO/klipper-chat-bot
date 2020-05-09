@@ -85,15 +85,15 @@ class Kevin(commands.Cog):
             await DMChannel.send(user, self._get_response(self.get_command(ctx.invoked_with), option))
 
 
-    @commands.command(help='!all option\n Will fetch all occurrences of option from all commands.  ')
-    @commands.has_permissions(embed_links=True)
-    async def all(self, ctx):
-        msg = ctx.message.content
-        option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
-        user = ctx.message.author
-        response = (list(self.get_related_links(self.command_list, option)))
-        escaped_response = ["<" + resp + ">" for resp in response]
-        await DMChannel.send(user, f"\n\n".join(escaped_response))
+    # @commands.command(help='!all option\n Will fetch all occurrences of option from all commands.  ')
+    # @commands.has_permissions(embed_links=True)
+    # async def all(self, ctx):
+    #     msg = ctx.message.content
+    #     option = msg[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
+    #     user = ctx.message.author
+    #     response = (list(self.get_related_links(self.command_list, option)))
+    #     escaped_response = ["<" + resp + ">" for resp in response]
+    #     await DMChannel.send(user, f"\n\n".join(escaped_response))
 
     @commands.command(aliases=['ex'], help='!example option\nWithout an option will list options')
     @commands.has_permissions(embed_links=True)
