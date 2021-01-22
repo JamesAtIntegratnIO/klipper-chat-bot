@@ -7,6 +7,22 @@ start_time = time.time()
 class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+    
+    async def _dm_user_wrapper(self, ctx):
+        sep = '<'
+        message = ctx.message.content[len(ctx.prefix) + len(ctx.invoked_with) + 1:]
+        option = message.split(sep, 1)[0]
+        print(f'option: {option}')
+        if ctx.message.mentions:
+            user = ctx.guild.get_member(ctx.message.mentions[0].id)
+        else:
+            user = ctx.message.author
+        if option == '':
+
+            await DMChannel.send(user, f"```{ctx.invoked_with} options:\n" +
+                           "\n".join(self._get_options(self.get_command(ctx.invoked_with))) + "```")
+        else:
+            await DMChannel.send(user, self._get_response(self.get_command(ctx.invoked_with), option))
 
     @commands.command(help="get info about the bot")
     async def about(self, ctx):
@@ -21,9 +37,9 @@ class Information(commands.Cog):
         message += "Contributors: Abom\n"
         message += "Github: https://github.com/boboysdadda/klipper-chat-bot"
         try:
-            await ctx.send(embed=embed)
+            await self._dm_user_wrapper(ctx)
         except discord.HTTPException:
-            await ctx.send(message)
+            await self._dm_user_wrapper(ctx)
 
     @commands.command(pass_context=True)
     async def uptime(self, ctx):
