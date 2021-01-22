@@ -23,7 +23,7 @@ class Information(commands.Cog):
                            "\n".join(self._get_options(self.get_command(ctx.invoked_with))) + "```")
         else:
             await DMChannel.send(user, self._get_response(self.get_command(ctx.invoked_with), option))
-
+            
     @commands.command(help="get info about the bot")
     async def about(self, ctx):
         embed = discord.Embed(colour=ctx.message.author.top_role.colour)
@@ -37,9 +37,9 @@ class Information(commands.Cog):
         message += "Contributors: Abom\n"
         message += "Github: https://github.com/boboysdadda/klipper-chat-bot"
         try:
-            await self._dm_user_wrapper(ctx)
+            await ctx.send(embed=embed)
         except discord.HTTPException:
-            await self._dm_user_wrapper(ctx)
+            await ctx.send(message)
 
     @commands.command(pass_context=True)
     async def uptime(self, ctx):
